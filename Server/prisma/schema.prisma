@@ -6,6 +6,50 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  notes     Ticket[] @relation(name: "TicketAuthor")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Ticket {
+  id                 String   @id @default(uuid())
+  title              String
+  description        String
+  project_id         String
+  project            Project  @relation(name: "TicketProject", fields: [project_id], references: [id])
+  author_id          String
+  author             User     @relation(name: "TicketAuthor", fields: [author_id], references: [id])
+  actual_responsable String
+  total_time_open    String
+  openAt             DateTime
+  closeAT            DateTime
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model UserInTicket {
+  id               String   @id @default(uuid())
+  user_id          String
+  ticket_id        String
+  total_time_spend String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  tickets     Ticket[] @relation(name: "TicketProject")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
