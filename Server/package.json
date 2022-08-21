@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "node-tickets-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@prisma/client": "^4.2.1",
     "@types/bcrypt": "^5.0.0",
