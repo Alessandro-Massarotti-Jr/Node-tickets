@@ -7,7 +7,6 @@ import { ReturnAPI } from "../resources/ReturnAPI";
 
 const prisma = new PrismaClient();
 
-
 class UserController {
     public async create(req: Request, res: Response) {
 
@@ -50,6 +49,22 @@ class UserController {
             const returnAPI = new ReturnAPI(false, err.message, {})
             return res.status(500).json(returnAPI);
         }
+    }
+
+    public async update(req: Request, res: Response){
+
+    }
+
+    public async delete(req: Request, res: Response){
+
+    }
+
+    public async get(req: Request, res: Response){
+
+    }
+
+    public async index(req: Request, res: Response){
+
     }
 
     public async login(req: Request, res: Response) {
