@@ -8,7 +8,7 @@ import { ReturnAPI } from "../resources/ReturnAPI";
 const prisma = new PrismaClient();
 
 class UserController {
-    public async create(req: Request, res: Response) {
+    public async store(req: Request, res: Response) {
 
         if (!req.body.name) {
             const returnAPI = new ReturnAPI(false, 'nome é obrigatorio', {});
