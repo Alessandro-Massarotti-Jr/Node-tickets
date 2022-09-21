@@ -1,13 +1,18 @@
+import { Response } from "express"
+
+interface MessageReturnInterface {
+     error: boolean;
+     message: string;
+     developerMessage:string;
+     data: object;
+     statusHTTP:number;
+}
+
 export class ReturnAPI {
 
-    public success: boolean
-    public message: string
-    public data: object
+    public static messageReturn(res:Response, data:MessageReturnInterface){
 
-    constructor(success: boolean, message: string, data: object) {
-        this.success = success;
-        this.message = message;
-        this.data = data;
+        return res.status(data.statusHTTP).json(data);
     }
 
 }

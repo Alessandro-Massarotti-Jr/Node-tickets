@@ -1,18 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt"
+import { UserInterface } from "../Models/UserModel";
 
 const prisma = new PrismaClient();
 
-export interface UserInterface {
-    id: string;
-    name: string;
-    email: string;
-    password: string;
-}
-
 export class UserRepository {
 
-    public async find(user_id: string) {
+    public static async find(user_id: string) {
         const user = await prisma.user.findUnique({
             where: {
                 id: user_id
@@ -33,7 +27,7 @@ export class UserRepository {
 
     }
 
-    public async store(user: Omit<UserInterface, 'id'>) {
+    public static async store(user: Omit<UserInterface, 'id'>) {
 
         const salt = await bcrypt.genSalt(12);
         const passwordHash = await bcrypt.hash(user.password, salt);
@@ -61,7 +55,7 @@ export class UserRepository {
 
     }
 
-    public async delete(user_id : string) {
+    public static async delete(user_id : string) {
         const deletedUser = await prisma.user.delete({
           where:{
             id:user_id
@@ -78,7 +72,7 @@ export class UserRepository {
         return deletedUser;
     }
 
-    public async findAll() {
+    public static async findAll() {
         const users = await prisma.user.findMany({
             select: {
                 email: true,
