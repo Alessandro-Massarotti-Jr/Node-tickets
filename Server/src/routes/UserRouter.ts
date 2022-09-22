@@ -5,15 +5,9 @@ import { UserController } from "../Controllers/UserController";
 export const userRoutes = express.Router();
 
 
-userRoutes.get("/", async (req, res) => {
+userRoutes.get("/", UserController.findAll)
 
-    return res.status(201).json({teste:"all users"});
-})
-
-userRoutes.get("/:id", async (req, res) => {
-
-    return res.status(201).json({teste:"one user"});
-})
+userRoutes.get("/:id", UserController.find)
 
 userRoutes.post("/", UserController.store)
 

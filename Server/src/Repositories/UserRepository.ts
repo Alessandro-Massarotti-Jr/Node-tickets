@@ -12,9 +12,9 @@ export class UserRepository {
                 id: user_id
             },
             select: {
+                id: true,
                 email: true,
                 name: true,
-                id: true
             }
         });
 
@@ -39,9 +39,9 @@ export class UserRepository {
                 name: user.name
             },
             select: {
+                id: true,
                 email: true,
                 name: true,
-                id: true
             }
         });
 
@@ -61,9 +61,9 @@ export class UserRepository {
             id:user_id
           },
           select: {
+            id: true,
             email: true,
             name: true,
-            id: true
         }
         });
 
@@ -75,9 +75,9 @@ export class UserRepository {
     public static async findAll() {
         const users = await prisma.user.findMany({
             select: {
+                id: true,
                 email: true,
                 name: true,
-                id: true
             }
         });
 

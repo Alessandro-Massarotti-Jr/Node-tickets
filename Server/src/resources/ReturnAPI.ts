@@ -2,9 +2,9 @@ import { Response } from "express"
 
 interface MessageReturnInterface {
      error: boolean;
-     message: string;
-     developerMessage:string;
-     data: object;
+     message: string | null;
+     developerMessage:string | null;
+     data: object | null;
      statusHTTP:number;
 }
 
