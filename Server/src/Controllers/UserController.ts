@@ -1,6 +1,4 @@
 import { PrismaClient } from "@prisma/client"
-import bcrypt from "bcrypt"
-import jwt, { Secret } from "jsonwebtoken";
 
 import { Request, Response } from "express"
 import { ReturnAPI } from "../resources/ReturnAPI";
