@@ -15,6 +15,7 @@ model User {
   name      String
   email     String   @unique
   password  String
+  deleted   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -33,6 +34,7 @@ model Ticket {
   total_time_open       String
   openAt                DateTime
   closeAT               DateTime
+  deleted               Boolean  @default(false)
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 
@@ -47,6 +49,7 @@ model UserInTicket {
   user_id          String
   ticket_id        String
   total_time_spend String
+  deleted          Boolean  @default(false)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
@@ -58,6 +61,7 @@ model Project {
   id          String   @id @default(uuid())
   title       String
   description String
+  deleted     Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

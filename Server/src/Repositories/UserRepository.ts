@@ -9,7 +9,7 @@ export class UserRepository {
     public static async find(user_id: string) {
         const user = await prisma.user.findUnique({
             where: {
-                id: user_id
+                id: user_id,
             },
             select: {
                 id: true,
@@ -51,17 +51,17 @@ export class UserRepository {
 
     }
 
-    public static async update(user:UserInterface) {
+    public static async update(user: UserInterface) {
         const updatedUser = await prisma.user.update({
-            where:{
-                id:user.id
+            where: {
+                id: user.id
             },
-            data:{
-                name:user.name,
-                email:user.email,
-                password:user.password
+            data: {
+                name: user.name,
+                email: user.email,
+                password: user.password
             },
-            select:{
+            select: {
                 id: true,
                 email: true,
                 name: true,
@@ -75,16 +75,14 @@ export class UserRepository {
         return updatedUser;
     }
 
-    public static async delete(user_id : string) {
-        const deletedUser = await prisma.user.delete({
-          where:{
-            id:user_id
-          },
-          select: {
-            id: true,
-            email: true,
-            name: true,
-        }
+    public static async delete(user_id: string) {
+        const deletedUser = await prisma.user.update({
+            where: {
+                id: user_id
+            },
+            data: {
+                deleted: true
+            }
         });
 
         async () => { await prisma.$disconnect(); };
@@ -94,6 +92,9 @@ export class UserRepository {
 
     public static async findAll() {
         const users = await prisma.user.findMany({
+            where: {
+                deleted: false
+            },
             select: {
                 id: true,
                 email: true,
