@@ -31,9 +31,6 @@ model Ticket {
   project_id            String
   author_id             String
   actual_responsable_id String
-  total_time_open       String
-  openAt                DateTime
-  closeAT               DateTime
   deleted               Boolean  @default(false)
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
@@ -49,6 +46,8 @@ model UserInTicket {
   user_id          String
   ticket_id        String
   total_time_spend String
+  openAt           String
+  closeAT          String
   deleted          Boolean  @default(false)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
