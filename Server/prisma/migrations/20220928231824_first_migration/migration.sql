@@ -19,7 +19,7 @@ CREATE TABLE `Ticket` (
     `description` VARCHAR(191) NOT NULL,
     `project_id` VARCHAR(191) NOT NULL,
     `author_id` VARCHAR(191) NOT NULL,
-    `actual_responsable_id` VARCHAR(191) NOT NULL,
+    `actual_responsable_id` VARCHAR(191) NULL,
     `deleted` BOOLEAN NOT NULL DEFAULT false,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `Project` (
 ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_author_id_fkey` FOREIGN KEY (`author_id`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_actual_responsable_id_fkey` FOREIGN KEY (`actual_responsable_id`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_actual_responsable_id_fkey` FOREIGN KEY (`actual_responsable_id`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Ticket` ADD CONSTRAINT `Ticket_project_id_fkey` FOREIGN KEY (`project_id`) REFERENCES `Project`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

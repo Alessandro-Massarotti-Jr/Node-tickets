@@ -30,13 +30,13 @@ model Ticket {
   description           String
   project_id            String
   author_id             String
-  actual_responsable_id String
+  actual_responsable_id String?
   deleted               Boolean  @default(false)
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 
   author             User           @relation(name: "TicketAuthor", fields: [author_id], references: [id])
-  actual_responsable User           @relation(name: "TicketActualResponsable", fields: [actual_responsable_id], references: [id])
+  actual_responsable User?          @relation(name: "TicketActualResponsable", fields: [actual_responsable_id], references: [id])
   project            Project        @relation(name: "TicketProject", fields: [project_id], references: [id])
   UserInTicket       UserInTicket[] @relation(name: "ticketOfUser")
 }
