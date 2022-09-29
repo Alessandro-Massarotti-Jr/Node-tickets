@@ -23,8 +23,21 @@ export class UserRepository {
         return user;
     }
 
-    public search() {
+    public static async findByMail(userMail:string) {
+        const user = await prisma.user.findUnique({
+            where: {
+               email:userMail 
+            },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+            }
+        });
 
+        async () => { await prisma.$disconnect(); };
+
+        return user;
     }
 
     public static async store(user: Omit<UserInterface, 'id'>) {
@@ -105,6 +118,18 @@ export class UserRepository {
         async () => { await prisma.$disconnect(); };
 
         return users;
+    }
+
+    public static async getFullData(user_id:string) {
+        const userData = await prisma.user.findUnique({
+            where: {
+                id:user_id
+            },
+        });
+
+        async () => { await prisma.$disconnect(); };
+
+        return userData;
     }
 
 }

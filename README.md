@@ -20,6 +20,7 @@ Tickets system development in Node.js
  - [DotEnv](https://www.npmjs.com/package/dotenv)
  - [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
  - [uuidV4](https://www.npmjs.com/package/uuidv4)
+ - [cookie-parser](cookie-parser)
 
 <br>
 
