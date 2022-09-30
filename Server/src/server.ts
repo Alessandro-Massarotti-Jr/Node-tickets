@@ -1,8 +1,8 @@
 import express from "express";
-import { routes } from "./routes"
+import { routes } from "./routes";
 import cors from "cors";
-import cookieParser from "cookie-parser"
-import "dotenv/config"
+import cookieParser from "cookie-parser";
+import "dotenv/config";
 
 const app = express();
 

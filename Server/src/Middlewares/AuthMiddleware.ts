@@ -3,11 +3,13 @@ import { ReturnAPI } from "../resources/ReturnAPI";
 
 import jwt, { Secret } from "jsonwebtoken";
 
-const jwt_secret = process.env.JWT_SECRET as Secret;
+
 
 export class AuthMiddleware {
 
     public static Authenticate(req: Request, res: Response, next: NextFunction) {
+
+        const jwt_secret = process.env.JWT_SECRET as Secret;
 
         const access_token = req.cookies.access_token;
 

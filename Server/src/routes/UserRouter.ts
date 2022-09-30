@@ -1,22 +1,23 @@
 import express from "express"
 import { UserController } from "../Controllers/UserController";
+import { AuthMiddleware } from "../Middlewares/AuthMiddleware";
 
 
 export const userRoutes = express.Router();
 
 
-userRoutes.get("/", UserController.findAll)
+userRoutes.get("/",AuthMiddleware.Authenticate, UserController.findAll)
 
-userRoutes.get("/:id", UserController.find)
+userRoutes.get("/:id",AuthMiddleware.Authenticate, UserController.find)
 
 userRoutes.post("/", UserController.store)
 
-userRoutes.put("/:id", async (req, res) => {
+userRoutes.put("/:id",AuthMiddleware.Authenticate, async (req, res) => {
 
     return res.status(201).json({teste:"update user"});
 })
 
-userRoutes.delete("/:id", async (req, res) => {
+userRoutes.delete("/:id",AuthMiddleware.Authenticate, async (req, res) => {
 
     return res.status(201).json({teste:"delete user"});
 })

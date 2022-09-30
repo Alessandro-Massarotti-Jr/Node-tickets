@@ -1,4 +1,5 @@
 import express from "express"
+import { AuthMiddleware } from "./Middlewares/AuthMiddleware";
 import { authRoutes } from "./routes/AuthRouter";
 import { projectRoutes } from "./routes/ProjectRouter";
 import { ticketRoutes } from "./routes/TicketRouter";
@@ -14,6 +15,6 @@ routes.get("/", async (req, res) => {
 
 
 routes.use("/users",userRoutes);
-routes.use("/projects",projectRoutes)
-routes.use("/tickets",ticketRoutes)
+routes.use("/projects",AuthMiddleware.Authenticate,projectRoutes)
+routes.use("/tickets",AuthMiddleware.Authenticate,ticketRoutes)
 routes.use("/auth",authRoutes)
