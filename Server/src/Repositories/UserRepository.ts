@@ -23,10 +23,10 @@ export class UserRepository {
         return user;
     }
 
-    public static async findByMail(userMail:string) {
+    public static async findByMail(userMail: string) {
         const user = await prisma.user.findUnique({
             where: {
-               email:userMail 
+                email: userMail
             },
             select: {
                 id: true,
@@ -120,10 +120,10 @@ export class UserRepository {
         return users;
     }
 
-    public static async getFullData(user_id:string) {
+    public static async getFullData(user_id: string) {
         const userData = await prisma.user.findUnique({
             where: {
-                id:user_id
+                id: user_id
             },
         });
 

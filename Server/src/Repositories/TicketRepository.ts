@@ -22,11 +22,11 @@ export class TicketRepository {
                         email: true,
                     }
                 },
-                project:{
-                    select:{
-                        id:true,
-                        title:true,
-                        description:true,
+                project: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
                     }
                 },
                 author: {
@@ -67,11 +67,11 @@ export class TicketRepository {
                         email: true,
                     }
                 },
-                project:{
-                    select:{
-                        id:true,
-                        title:true,
-                        description:true,
+                project: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
                     }
                 },
                 author: {
@@ -112,11 +112,11 @@ export class TicketRepository {
                         email: true,
                     }
                 },
-                project:{
-                    select:{
-                        id:true,
-                        title:true,
-                        description:true,
+                project: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
                     }
                 },
                 author: {
@@ -150,11 +150,11 @@ export class TicketRepository {
                         email: true,
                     }
                 },
-                project:{
-                    select:{
-                        id:true,
-                        title:true,
-                        description:true,
+                project: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
                     }
                 },
                 author: {

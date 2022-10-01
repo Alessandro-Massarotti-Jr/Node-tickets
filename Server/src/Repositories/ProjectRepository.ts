@@ -55,8 +55,8 @@ export class ProjectRepository {
             where: {
                 id: project_id,
             },
-            data:{
-                deleted:true
+            data: {
+                deleted: true
             },
             select: {
                 id: true,

@@ -10,8 +10,8 @@ export class ProjectController {
 
         const project = await ProjectRepository.find(projectId);
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Projeto encontrado',developerMessage:'project find',data:project,statusHTTP:200});
-        
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Projeto encontrado', developerMessage: 'project find', data: project, statusHTTP: 200 });
+
     }
     public static async store(req: Request, res: Response) {
 
@@ -19,14 +19,14 @@ export class ProjectController {
 
         const newProject = await ProjectRepository.store(project);
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Projeto cadastrado com sucesso',developerMessage:'project created',data:newProject,statusHTTP:201});
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Projeto cadastrado com sucesso', developerMessage: 'project created', data: newProject, statusHTTP: 201 });
 
     }
     public static async findAll(req: Request, res: Response) {
 
         const projects = await ProjectRepository.findAll();
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Projetos encontrados',developerMessage:'projects find',data:projects,statusHTTP:200});
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Projetos encontrados', developerMessage: 'projects find', data: projects, statusHTTP: 200 });
     }
     public static update() {
 

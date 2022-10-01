@@ -14,8 +14,8 @@ export class UserController {
 
         const user = await UserRepository.find(userId);
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Usuário encontrado',developerMessage:'user find',data:user,statusHTTP:200});
-        
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Usuário encontrado', developerMessage: 'user find', data: user, statusHTTP: 200 });
+
     }
     public static async store(req: Request, res: Response) {
 
@@ -23,14 +23,14 @@ export class UserController {
 
         const newUser = await UserRepository.store(user);
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Usuário cadastrado com sucesso',developerMessage:'user created',data:newUser,statusHTTP:201});
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Usuário cadastrado com sucesso', developerMessage: 'user created', data: newUser, statusHTTP: 201 });
 
     }
     public static async findAll(req: Request, res: Response) {
 
         const users = await UserRepository.findAll();
 
-        return ReturnAPI.messageReturn(res,{error:false,message:'Usuários encontrados',developerMessage:'users find',data:users,statusHTTP:200});
+        return ReturnAPI.messageReturn(res, { error: false, message: 'Usuários encontrados', developerMessage: 'users find', data: users, statusHTTP: 200 });
     }
     public static update() {
 

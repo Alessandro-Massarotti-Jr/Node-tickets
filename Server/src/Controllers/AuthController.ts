@@ -20,19 +20,19 @@ export class AuthController {
     public static async login(req: Request, res: Response) {
         const loginData: LoginDataInterface = req.body;
         const user = await UserRepository.findByMail(loginData.email);
-        if(user){
+        if (user) {
             const userData = await UserRepository.getFullData(user.id);
-            if(userData){
-                const loginResult = await LoginService.execute(loginData,userData);
-                res.cookie('access_token',loginResult.data?.token,{httpOnly:true,maxAge:36000,})
-                return ReturnAPI.messageReturn(res,loginResult);
+            if (userData) {
+                const loginResult = await LoginService.execute(loginData, userData);
+                res.cookie('access_token', loginResult.data?.token, { httpOnly: true, maxAge: 36000, })
+                return ReturnAPI.messageReturn(res, loginResult);
             }
         }
     }
 
-    public static async logout(req: Request, res: Response){
-        res.cookie('access_token','',{maxAge:1});
-        return ReturnAPI.messageReturn(res,{error:false,message:"logout realizado com sucesso",developerMessage:"user logout",data:null,statusHTTP:200});
+    public static async logout(req: Request, res: Response) {
+        res.cookie('access_token', '', { maxAge: 1 });
+        return ReturnAPI.messageReturn(res, { error: false, message: "logout realizado com sucesso", developerMessage: "user logout", data: null, statusHTTP: 200 });
     }
 
 
