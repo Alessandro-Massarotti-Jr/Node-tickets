@@ -45,9 +45,9 @@ model UserInTicket {
   id               String   @id @default(uuid())
   user_id          String
   ticket_id        String
-  total_time_spend String
+  total_time_spend String?
   openAt           String
-  closeAT          String
+  closeAT          String?
   deleted          Boolean  @default(false)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
