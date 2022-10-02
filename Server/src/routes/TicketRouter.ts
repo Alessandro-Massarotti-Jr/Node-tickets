@@ -1,9 +1,11 @@
 import express from "express"
 import { TicketController } from "../Controllers/TicketController";
+import { UserInTicketController } from "../Controllers/UserInTicketController";
 
 
 export const ticketRoutes = express.Router();
 
+ticketRoutes.get("/teste",UserInTicketController.assignUserInTicket);
 
 ticketRoutes.get("/", TicketController.findAll);
 

@@ -24,7 +24,7 @@ export class AuthController {
             const userData = await UserRepository.getFullData(user.id);
             if (userData) {
                 const loginResult = await LoginService.execute(loginData, userData);
-                res.cookie('access_token', loginResult.data?.token, { httpOnly: true, maxAge: 36000, })
+                res.cookie('access_token', loginResult.data?.token, { httpOnly: true, maxAge: 3600000, })
                 return ReturnAPI.messageReturn(res, loginResult);
             }
         }
