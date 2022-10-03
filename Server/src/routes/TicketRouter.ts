@@ -5,7 +5,7 @@ import { UserInTicketController } from "../Controllers/UserInTicketController";
 
 export const ticketRoutes = express.Router();
 
-ticketRoutes.get("/teste",UserInTicketController.assignUserInTicket);
+ticketRoutes.post("/teste",UserInTicketController.assignUserInTicket);
 
 ticketRoutes.get("/", TicketController.findAll);
 
