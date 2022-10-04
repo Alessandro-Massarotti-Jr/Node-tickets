@@ -3,8 +3,6 @@ import { ReturnAPI } from "../resources/ReturnAPI";
 
 import jwt, { Secret } from "jsonwebtoken";
 
-
-
 export class AuthMiddleware {
 
     public static Authenticate(req: Request, res: Response, next: NextFunction) {
@@ -22,7 +20,7 @@ export class AuthMiddleware {
                 return ReturnAPI.messageReturn(res, { error: false, message: 'token de autenticação invalido', developerMessage: 'access token invalid', data: err, statusHTTP: 401 })
             }
 
-            req.body.token_data = decode;
+            req.AuthUser = decode;
 
             return next();
         });
