@@ -1,6 +1,7 @@
 import express from "express"
 import { TicketController } from "../Controllers/TicketController";
 import { UserInTicketController } from "../Controllers/UserInTicketController";
+import { userInTicketRoutes } from "./UserInTicketRouter";
 
 
 export const ticketRoutes = express.Router();
@@ -16,3 +17,5 @@ ticketRoutes.post("/", TicketController.store);
 ticketRoutes.put("/", (req, res) => { console.log('teste') });
 
 ticketRoutes.delete("/", (req, res) => { console.log('teste') });
+
+ticketRoutes.use("/user-in-ticket",userInTicketRoutes)
