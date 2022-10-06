@@ -5,7 +5,54 @@ const prisma = new PrismaClient();
 
 export class UserInTicketRepository {
     public static async find(userInTicket_id: string) {
+        const userinTicket = await prisma.userInTicket.findUnique({
+            where: {
+                id:userInTicket_id
+                 
+            },
+            select: {
+                id: true,
+                total_time_spend: true,
+                openAt: true,
+                closeAT: true,
+                user_id:true,
+                ticket_id:true,
+                createdAt:true,
+                updatedAt:true,
+                user: {
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    }
+                },
+                ticket: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
+                        project: {
+                            select: {
+                                id: true,
+                                title: true,
+                                description: true,
+                            }
+                        },
+                        author: {
+                            select: {
+                                id: true,
+                                name: true,
+                                email: true,
+                            }
+                        }
+                    }
+                }
 
+            }
+        });
+        async () => { await prisma.$disconnect(); };
+
+        return userinTicket;
     }
     public static async findAll() {
 
@@ -112,7 +159,60 @@ export class UserInTicketRepository {
 
         return newUserInTicket;
     }
-    public static async update(userInTicket_id:string) {
+    public static async update(userInTicket: UserInTicketInterface) {
+
+        const newUserInTicket = await prisma.userInTicket.update({
+            where:{
+                id:userInTicket.id
+            },
+            data: {
+                user_id: userInTicket.user_id,
+                ticket_id: userInTicket.ticket_id,
+                openAt: userInTicket.openAt,
+                closeAT:userInTicket.closeAT,
+                total_time_spend:userInTicket.total_time_spend
+
+            },
+            select: {
+                id: true,
+                total_time_spend: true,
+                openAt: true,
+                closeAT: true,
+                user: {
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    }
+                },
+                ticket: {
+                    select: {
+                        id: true,
+                        title: true,
+                        description: true,
+                        project: {
+                            select: {
+                                id: true,
+                                title: true,
+                                description: true,
+                            }
+                        },
+                        author: {
+                            select: {
+                                id: true,
+                                name: true,
+                                email: true,
+                            }
+                        }
+                    }
+                }
+
+            }
+        });
+
+        async () => { await prisma.$disconnect(); };
+
+        return newUserInTicket;
 
     }
     public static async delete() {
