@@ -10,9 +10,9 @@ export class ReOpenTicketService {
             updatedUserInTicket.lastOpenAt =  moment().locale('pt-br').utc().format();
             updatedUserInTicket.isOpen = true;
             const newUserInTicket = await UserInTicketRepository.update(updatedUserInTicket as UserInTicketInterface);
-            return { error: false, message: "Ticket fechado", developerMessage: "ticket closed", data: newUserInTicket, statusHTTP: 200 } ;
+            return { error: false, message: "Ticket aberto novamente", developerMessage: "ticket re-open", data: newUserInTicket, statusHTTP: 200 } ;
         }else{
-            return { error: true, message: "Não foi possivel fechar o ticket", developerMessage: "Ticket not found", data: null, statusHTTP: 404 } ;
+            return { error: true, message: "Não foi possivel abrir o ticket", developerMessage: "Ticket not found", data: null, statusHTTP: 404 } ;
         }
     }
 }

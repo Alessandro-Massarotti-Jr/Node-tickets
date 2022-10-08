@@ -11,7 +11,7 @@ export class CloseTicketService {
             const openAt = moment(updatedUserInTicket.lastOpenAt);
             const closeAt = moment();
             updatedUserInTicket.lastCloseAT = closeAt.locale('pt-br').utc().format();
-            updatedUserInTicket.total_time_spend = String(closeAt.diff(openAt,'minutes'));
+            updatedUserInTicket.total_time_spend = String(Number(updatedUserInTicket.total_time_spend) + closeAt.diff(openAt,'minutes'));
             updatedUserInTicket.isOpen = false;
             const newUserInTicket = await UserInTicketRepository.update(updatedUserInTicket as UserInTicketInterface);
             return { error: false, message: "Ticket fechado", developerMessage: "ticket closed", data: newUserInTicket, statusHTTP: 200 } ;
