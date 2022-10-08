@@ -8,10 +8,11 @@ export class CloseTicketService {
         const updatedUserInTicket = await UserInTicketRepository.find(userInTicket.id); 
 
         if(updatedUserInTicket){
-            const openAt = moment(updatedUserInTicket.openAt);
+            const openAt = moment(updatedUserInTicket.lastOpenAt);
             const closeAt = moment();
-            updatedUserInTicket.closeAT = closeAt.locale('pt-br').utc().format();
+            updatedUserInTicket.lastCloseAT = closeAt.locale('pt-br').utc().format();
             updatedUserInTicket.total_time_spend = String(closeAt.diff(openAt,'minutes'));
+            updatedUserInTicket.isOpen = false;
             const newUserInTicket = await UserInTicketRepository.update(updatedUserInTicket as UserInTicketInterface);
             return { error: false, message: "Ticket fechado", developerMessage: "ticket closed", data: newUserInTicket, statusHTTP: 200 } ;
         }else{

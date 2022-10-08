@@ -3,6 +3,7 @@ export interface UserInTicketInterface {
     user_id: string;
     ticket_id: string;
     total_time_spend?: string;
-    openAt: string;
-    closeAT?: string;
+    lastOpenAt: string;
+    lastCloseAT?: string;
+    isOpen?: boolean;
 }

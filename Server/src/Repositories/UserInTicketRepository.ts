@@ -13,12 +13,13 @@ export class UserInTicketRepository {
             select: {
                 id: true,
                 total_time_spend: true,
-                openAt: true,
-                closeAT: true,
+                lastOpenAt: true,
+                lastCloseAT: true,
                 user_id:true,
                 ticket_id:true,
                 createdAt:true,
                 updatedAt:true,
+                isOpen:true,
                 user: {
                     select: {
                         id: true,
@@ -71,8 +72,8 @@ export class UserInTicketRepository {
             select: {
                 id: true,
                 total_time_spend: true,
-                openAt: true,
-                closeAT: true,
+                lastOpenAt: true,
+                lastCloseAT: true,
                 user: {
                     select: {
                         id: true,
@@ -115,14 +116,14 @@ export class UserInTicketRepository {
             data: {
                 user_id: userInTicket.user_id,
                 ticket_id: userInTicket.ticket_id,
-                openAt: userInTicket.openAt
+                lastOpenAt: userInTicket.lastOpenAt
 
             },
             select: {
                 id: true,
                 total_time_spend: true,
-                openAt: true,
-                closeAT: true,
+                lastOpenAt: true,
+                lastCloseAT: true,
                 user: {
                     select: {
                         id: true,
@@ -168,16 +169,17 @@ export class UserInTicketRepository {
             data: {
                 user_id: userInTicket.user_id,
                 ticket_id: userInTicket.ticket_id,
-                openAt: userInTicket.openAt,
-                closeAT:userInTicket.closeAT,
-                total_time_spend:userInTicket.total_time_spend
+                lastOpenAt: userInTicket.lastOpenAt,
+                lastCloseAT:userInTicket.lastCloseAT,
+                total_time_spend:userInTicket.total_time_spend,
+                isOpen:userInTicket.isOpen
 
             },
             select: {
                 id: true,
                 total_time_spend: true,
-                openAt: true,
-                closeAT: true,
+                lastOpenAt: true,
+                lastCloseAT: true,
                 user: {
                     select: {
                         id: true,

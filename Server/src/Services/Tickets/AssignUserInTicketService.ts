@@ -5,7 +5,7 @@ import moment from 'moment';
 export class AssignUserInTicketService {
     public static async execute(userInTicket: UserInTicketInterface) {
 
-        userInTicket.openAt = moment().locale('pt-br').utc().format();
+        userInTicket.lastOpenAt = moment().locale('pt-br').utc().format();
         const newUserInTicket = await UserInTicketRepository.store(userInTicket);
         return newUserInTicket;
 
