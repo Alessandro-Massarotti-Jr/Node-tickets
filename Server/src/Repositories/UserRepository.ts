@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt"
-import { UserInterface } from "../Models/UserModel";
+import { UserInterface, UserVisibleData } from "../Models/UserModel";
 
 const prisma = new PrismaClient();
 
@@ -11,11 +11,7 @@ export class UserRepository {
             where: {
                 id: user_id,
             },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-            }
+            select: UserVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -28,11 +24,7 @@ export class UserRepository {
             where: {
                 email: userMail
             },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-            }
+            select: UserVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -51,11 +43,7 @@ export class UserRepository {
                 password: passwordHash,
                 name: user.name
             },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-            }
+            select: UserVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -74,11 +62,7 @@ export class UserRepository {
                 email: user.email,
                 password: user.password
             },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-            }
+            select: UserVisibleData
         });
 
         async () => {
@@ -95,7 +79,8 @@ export class UserRepository {
             },
             data: {
                 deleted: true
-            }
+            },
+            select:UserVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -108,11 +93,7 @@ export class UserRepository {
             where: {
                 deleted: false
             },
-            select: {
-                id: true,
-                email: true,
-                name: true,
-            }
+            select: UserVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -125,6 +106,15 @@ export class UserRepository {
             where: {
                 id: user_id
             },
+            select:{
+                id: true,
+                email: true,
+                name: true,
+                password:true,
+                deleted:true,
+                createdAt:true,
+                updatedAt:true,
+            }
         });
 
         async () => { await prisma.$disconnect(); };

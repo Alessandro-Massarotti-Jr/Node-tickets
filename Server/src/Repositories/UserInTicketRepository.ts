@@ -15,11 +15,11 @@ export class UserInTicketRepository {
                 total_time_spend: true,
                 lastOpenAt: true,
                 lastCloseAT: true,
+                isOpen:true,
                 user_id:true,
                 ticket_id:true,
                 createdAt:true,
                 updatedAt:true,
-                isOpen:true,
                 user: {
                     select: {
                         id: true,

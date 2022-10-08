@@ -3,3 +3,12 @@ export interface ProjectInterface {
     title: string;
     description: string;
 }
+
+export const ProjectVisibleData = {
+    id: true,
+    title: true,
+    description: true,
+    deleted:true,
+    createdAt:true,
+    updatedAt:true,
+}

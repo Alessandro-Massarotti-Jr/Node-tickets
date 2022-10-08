@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { ProjectInterface } from "../Models/ProjectModel";
+import { ProjectInterface, ProjectVisibleData } from "../Models/ProjectModel";
 
 
 const prisma = new PrismaClient();
@@ -11,11 +11,7 @@ export class ProjectRepository {
             where: {
                 id: project_id,
             },
-            select: {
-                id: true,
-                title: true,
-                description: true,
-            }
+            select: ProjectVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -33,11 +29,7 @@ export class ProjectRepository {
                 title: project.title,
                 description: project.description,
             },
-            select: {
-                id: true,
-                title: true,
-                description: true,
-            }
+            select: ProjectVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -58,11 +50,7 @@ export class ProjectRepository {
             data: {
                 deleted: true
             },
-            select: {
-                id: true,
-                title: true,
-                description: true,
-            }
+            select: ProjectVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
@@ -75,11 +63,7 @@ export class ProjectRepository {
             where: {
                 deleted: false
             },
-            select: {
-                id: true,
-                title: true,
-                description: true,
-            }
+            select: ProjectVisibleData
         });
 
         async () => { await prisma.$disconnect(); };
