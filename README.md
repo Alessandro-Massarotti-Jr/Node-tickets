@@ -22,7 +22,6 @@ Tickets system development in Node.js
  - [uuidV4](https://www.npmjs.com/package/uuidv4)
  - [cookie-parser](cookie-parser)
 
-
 <br>
 
 ---
